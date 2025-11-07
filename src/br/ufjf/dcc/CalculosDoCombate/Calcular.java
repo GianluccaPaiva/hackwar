@@ -43,7 +43,7 @@ public class Calcular {
             return (int) Math.max(total - (total * reducao), 0);
         } else {
             ataques.sort((a, b) -> Double.compare(b.getPoder(), a.getPoder()));
-            int atkMaior = (int) ataques.get(0).getPoder();
+            int atkMaior = (int) ataques.getFirst().getPoder();
             int atkMenor = 0;
             for (int i = 1; i < ataques.size(); i++) {
                 atkMenor += (int) ataques.get(i).getPoder();
