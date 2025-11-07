@@ -14,35 +14,59 @@ public class Baralho {
         inicializarCarta();
     }
 
+    private String tipoArquivo(String caminhoCSV){
+        if(caminhoCSV.contains("ataque")){
+            return "Ataque";
+        } else if (caminhoCSV.contains("defesa")){
+            return "Defesa";
+        } else if (caminhoCSV.contains("suporte")){
+            return "Suporte";
+        } else {
+            return "Desconhecido";
+        }
+
+    }
     public void carrregarCarta(String caminhoCSV){
-        try(BufferedReader br = new BufferedReader(new FileReader(caminhoCSV))){
-            String linha;
+        try(BufferedReader br = new BufferedReader(new FileReader(caminhoCSV))) {
+            String linha, tipoArquivo = tipoArquivo(caminhoCSV);
             boolean primeiraLinha = true;
-            while((linha = br.readLine()) != null ) {
+            while ((linha = br.readLine()) != null) {
                 if (primeiraLinha) {
                     primeiraLinha = false;
                     continue;
                 }
                 String[] valores = linha.split(",");
-                if (valores.length < 5) continue;
-                String nome, tipo, descricao, poder, custo;
-                nome = valores[0].trim();
-                tipo = valores[1].trim();
-                poder = valores[2].trim();
-                custo = valores[3].trim();
-                descricao = valores[4].trim();
+                String nome, tipo, efeito, descricao;
+                int custo, duracao;
+                double poder;
+                if (tipoArquivo.equals("SUPORTE")) {
+                    if (valores.length < 6) continue;
+                    nome = valores[0].trim();
+                    tipo = valores[1].trim();
+                    poder = Double.parseDouble(valores[2].trim());
+                    custo = Integer.parseInt(valores[3].trim());
+                    efeito = valores[4].trim();
+                    descricao = valores[5].trim();
 
-                try {
-                    int poderInt = Integer.parseInt(poder);
-                    int custoInt = Integer.parseInt(custo);
-                    Carta carta = new Carta(nome, tipo, descricao, poderInt, custoInt);
-                    cartas.add(carta);
-                } catch (NumberFormatException e) {
-                    System.out.println("⚠️ Linha ignorada (valores inválidos): " + linha);
+                } else {
+                    if (valores.length < 5) continue;
+                    nome = valores[0].trim();
+                    tipo = valores[1].trim();
+                    poder = Double.parseDouble(valores[2].trim());
+                    custo = Integer.parseInt(valores[3].trim());
+                    descricao = valores[4].trim();
+                    efeito = "Não tem efeito";
+
                 }
+                Carta carta = new Carta(nome, tipo, descricao, poder, custo, efeito);
+                cartas.add(carta);
+
+
+                System.out.println("✅ Cartas carregadas de " + caminhoCSV + " — Tipo: " + tipoArquivo + " (" + cartas.size() + " no total)");
+                ;
             }
         } catch (IOException e) {
-            System.out.println("Erro ao ler o arquivo " + caminhoCSV + ": " + e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 
