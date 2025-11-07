@@ -39,7 +39,7 @@ public class Baralho {
                 String nome, tipo, efeito, descricao;
                 int custo, duracao;
                 double poder;
-                if (tipoArquivo.equals("SUPORTE")) {
+                if (tipoArquivo.equals("Suporte")) {
                     if (valores.length < 6) continue;
                     nome = valores[0].trim();
                     tipo = valores[1].trim();

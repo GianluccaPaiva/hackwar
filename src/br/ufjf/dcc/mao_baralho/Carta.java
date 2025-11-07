@@ -19,8 +19,9 @@ public class Carta {
         System.out.println("Tipo: " + this.tipo);
         System.out.println("Poder: " + this.poder);
         System.out.println("Custo: " + this.custo);
-        if(this.efeito != "Não tem efeito" )
+        if(!this.efeito.equals( "Não tem efeito") ) {
             System.out.println("Efeito: " + this.efeito);
+        }
         System.out.println("Descricao: " + this.descricao);
     }
 }

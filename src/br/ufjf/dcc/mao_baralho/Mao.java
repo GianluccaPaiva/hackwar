@@ -53,4 +53,13 @@ public class Mao {
             System.out.println(" - " + carta.nome + " [" + carta.tipo + "]");
         }
     }
+
+    public void exibirCartaDetalhada(int indice) {
+        if (indice < 0 || indice >= this.mao.size()) {
+            System.out.println("Índice inválido.");
+            return;
+        }
+        Carta carta = this.mao.get(indice);
+        carta.imprimirCarta();
+    }
 }
