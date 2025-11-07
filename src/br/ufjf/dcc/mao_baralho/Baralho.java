@@ -18,8 +18,7 @@ public class Baralho {
         try(BufferedReader br = new BufferedReader(new FileReader(caminhoCSV))){
             String linha;
             boolean primeiraLinha = true;
-            linha = br.readLine();
-            while(linha!= null ){
+            while((linha = br.readLine()) != null ) {
                 if (primeiraLinha) {
                     primeiraLinha = false;
                     continue;
@@ -33,13 +32,17 @@ public class Baralho {
                 custo = valores[3].trim();
                 descricao = valores[4].trim();
 
-                Carta carta = new Carta(nome, tipo, descricao, poder, custo);
-                cartas.add(carta);
+                try {
+                    int poderInt = Integer.parseInt(poder);
+                    int custoInt = Integer.parseInt(custo);
+                    Carta carta = new Carta(nome, tipo, descricao, poderInt, custoInt);
+                    cartas.add(carta);
+                } catch (NumberFormatException e) {
+                    System.out.println("⚠️ Linha ignorada (valores inválidos): " + linha);
+                }
             }
         } catch (IOException e) {
             System.out.println("Erro ao ler o arquivo " + caminhoCSV + ": " + e.getMessage());
-        } catch (NumberFormatException e) {
-            System.out.println("Erro ao converter número no arquivo " + caminhoCSV + ": " + e.getMessage());
         }
     }
 
