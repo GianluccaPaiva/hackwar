@@ -10,6 +10,17 @@ Baralho com 50 cartas.
 Tem que ter um replay escrevendo em um arquivo txt todas as jogadas.
 Identificador dos jogadores: matrícula
     do bot: 202565001
+Carta deve apresentar os atributos:
+    
+    Nome
+    Poder
+    Tipo (Ataque, Defesa, Suporte)
+    Custo de energia
+    Descrição
+
+Funções da carta:
+
+    Getter e setter
 
 ## Cálculo de dano:
     Dano final = ataque - defesa
