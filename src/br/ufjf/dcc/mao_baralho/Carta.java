@@ -24,4 +24,16 @@ public class Carta {
         }
         System.out.println("Descricao: " + this.descricao);
     }
+
+    public String getTipo() {
+        return this.tipo;
+    }
+
+    public double getPoder() {
+        return this.poder;
+    }
+
+    public int getCusto() {
+        return this.custo;
+    }
 }
