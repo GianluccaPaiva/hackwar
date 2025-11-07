@@ -33,23 +33,23 @@ public class Mao {
         adicionarCartas(defesas, 4);
         adicionarCartas(suportes, 2);
 
-        if (mao.size() > LIMITE_CARTAS) {
-            mao = mao.subList(0, LIMITE_CARTAS);
+        if (this.mao.size() > LIMITE_CARTAS) {
+            this.mao = this.mao.subList(0, LIMITE_CARTAS);
         }
     }
 
     private void adicionarCartas(List<Carta> origem, int quantidade) {
         int limite = Math.min(quantidade, origem.size());
         for (int i = 0; i < limite; i++) {
-            if (mao.size() < LIMITE_CARTAS) {
-                mao.add(origem.get(i));
+            if (this.mao.size() < LIMITE_CARTAS) {
+                this.mao.add(origem.get(i));
             }
         }
     }
 
     public void exibirMao() {
-        System.out.println("🃏 Cartas da Mão (" + mao.size() + "/" + LIMITE_CARTAS + "):");
-        for (Carta carta : mao) {
+        System.out.println("Cartas da Mão (" + this.mao.size() + "/" + LIMITE_CARTAS + "):");
+        for (Carta carta : this.mao) {
             System.out.println(" - " + carta.nome + " [" + carta.tipo + "]");
         }
     }
