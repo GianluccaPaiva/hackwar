@@ -2,7 +2,6 @@ package br.ufjf.dcc.mao_baralho;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
