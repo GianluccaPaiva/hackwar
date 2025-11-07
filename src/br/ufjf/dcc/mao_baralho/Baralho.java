@@ -2,9 +2,12 @@ package br.ufjf.dcc.mao_baralho;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
+
+import static java.lang.Thread.sleep;
 
 public class Baralho {
     private List<Carta> cartas;
@@ -63,7 +66,7 @@ public class Baralho {
 
 
                 System.out.println("✅ Cartas carregadas de " + caminhoCSV + " — Tipo: " + tipoArquivo + " (" + cartas.size() + " no total)");
-                ;
+
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
