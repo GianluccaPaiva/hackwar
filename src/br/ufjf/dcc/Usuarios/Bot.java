@@ -11,9 +11,9 @@ public class Bot {
     private int vida, energia;
     private Mao mao;
 
-    private final Random random = new Random(); // Objeto Random para seleção aleatória
+    private final Random random = new Random();
 
-    // Adicione estas listas como membros da classe Bot.java
+
 
     private static  String[] FRASES_ATAQUE = {
             "Sério? Você tentou *isso*? É como se uma formiga tentasse arranhar o vidro.",
@@ -65,16 +65,15 @@ public class Bot {
         Carta melhorCarta = null;
         double maiorPoder = -1;
 
-        // Itera sobre a lista de cartas sem ordenar
         for (Carta carta : listaCartas) {
-            // 1. Verifica se pode pagar
+
             if (carta.getCusto() <= energiaAtual) {
 
-                // 2. Verifica se o efeito é obrigatório (apenas para suportes)
+
                 boolean efeitoValido = efeitoObrigatorio.isEmpty() || carta.getEfeito().equalsIgnoreCase(efeitoObrigatorio);
 
                 if (efeitoValido) {
-                    // 3. Verifica se tem o maior poder encontrado até agora
+
                     if (carta.getPoder() > maiorPoder) {
                         maiorPoder = carta.getPoder();
                         melhorCarta = carta;
@@ -104,14 +103,12 @@ public class Bot {
         List<Carta> cartasSuporte = this.mao.getCartasDoTipo("Suporte");
 
         String tipoInimigo = cartaInimiga.getTipo().toLowerCase();
-        // Garante que o efeito inimigo seja lido, mesmo que a carta não seja suporte, para evitar NullPointer
+
         String efeitoInimigo = tipoInimigo.equals("suporte") ? cartaInimiga.getEfeito().toUpperCase() : "";
 
         System.out.println("--- 🤖 Bot Analisando Reação à carta: " + cartaInimiga.getNome() + " (" + cartaInimiga.getTipo() + ") ---");
 
-        // ===================================
-        // Lógica para seleção da frase aleatória do Capitão Pátria
-        // ===================================
+
         if (tipoInimigo.equals("ataque")) {
             System.out.println(this.nome + " - "  +  this.id + ": " + selecionarFrase(FRASES_ATAQUE));
         } else if (tipoInimigo.equals("defesa")) {
@@ -125,22 +122,17 @@ public class Bot {
                 System.out.println("CAPITÃO PÁTRIA: Seu movimento é irrelevante para a minha vitória.");
             }
         }
-        // ===================================
-        // FIM da seleção da frase aleatória
-        // ===================================
 
-
-        // 1. Reação a Ataque: Usa encontrarMelhorCarta para a Defesa de maior poder
         if (tipoInimigo.equals("ataque")) {
             cartaEscolhida = encontrarMelhorCarta(cartasDefesa, this.energia, "");
 
-            // 2. Reação a Defesa: Usa encontrarMelhorCarta para o Ataque de maior poder
+
         } else if (tipoInimigo.equals("defesa")) {
             cartaEscolhida = encontrarMelhorCarta(cartasAtaque, this.energia, "");
 
-            // 3. Reação a Suporte
+
         } else if (tipoInimigo.equals("suporte")) {
-            // Lógica para AUMENTA_ATAQUE
+
             if (efeitoInimigo.contains("AUMENTA_ATAQUE")) {
                 cartaEscolhida = encontrarMelhorCarta(cartasSuporte, this.energia, "DIMINUI_ATAQUE");
 
@@ -148,26 +140,25 @@ public class Bot {
                     cartaEscolhida = encontrarMelhorCarta(cartasDefesa, this.energia, "");
                 }
 
-                // Lógica para AUMENTA_VIDA / DIMINUI_ATAQUE
+
             } else if (efeitoInimigo.contains("AUMENTA_VIDA") || efeitoInimigo.contains("DIMINUI_ATAQUE")) {
                 if(this.vida < MAX_VIDA / 2) {
-                    // Se a vida está baixa, tenta usar Suporte de cura
+
                     cartaEscolhida = encontrarMelhorCarta(cartasSuporte, this.energia, "AUMENTA_VIDA");
                 }else {
-                    // Reage com Ataque para manter pressão
+
                     cartaEscolhida = encontrarMelhorCarta(cartasAtaque, this.energia, "");
                 }
             }
         }
 
-        // 4. Reação Padrão/Fallback: Usa encontrarMelhorCarta em toda a mão
         if (cartaEscolhida == null) {
             cartaEscolhida = encontrarMelhorCarta(this.mao.getMao(), this.energia, "");
         }
 
-        // Consolidação da jogada:
         if (cartaEscolhida != null) {
-            System.out.println("✅ Bot reagiu com: " + cartaEscolhida.getNome() + " (" + cartaEscolhida.getTipo() + " - Custo: " + cartaEscolhida.getCusto() + ")");
+            System.out.println("✅ Bot reagiu com: " + cartaEscolhida.getNome() + " (" + cartaEscolhida.getTipo() +
+                    " - Custo: " + cartaEscolhida.getCusto() + ")");
             this.mao.removerCarta(cartaEscolhida);
             this.energia -= cartaEscolhida.getCusto();
         } else {
