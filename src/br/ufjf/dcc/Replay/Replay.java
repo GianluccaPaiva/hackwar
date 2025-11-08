@@ -124,4 +124,10 @@ public class Replay {
             System.out.println("❌ Erro ao atualizar JSON: " + e.getMessage());
         }
     }
+
+    public static void reiniciarListaReplay(){
+        indice = 1;
+        arqAtual = arqBase;
+        System.out.println("🔄 Replay reiniciado para: " + arqAtual);
+    }
 }

@@ -7,7 +7,4 @@ void main() {
     Mao m1 = new Mao();
     m1.selecaoAutomatica();
     m1.exibirMao();
-    Replay.carregarConfig();
-    Replay.registrar("fafas");
-    Replay.novoReplay();
 }
