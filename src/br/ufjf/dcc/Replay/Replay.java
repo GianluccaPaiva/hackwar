@@ -130,4 +130,72 @@ public class Replay {
         arqAtual = arqBase;
         System.out.println("🔄 Replay reiniciado para: " + arqAtual);
     }
+
+    public static void mostrarReplay() {
+        System.out.println("📂 Replay atual (raw): " + arqAtual);
+
+        if (arqAtual == null || arqAtual.isBlank()) {
+            System.out.println("⚠️ arqAtual vazio. Chame Replay.carregarConfig() antes.");
+            return;
+        }
+
+        java.util.function.UnaryOperator<String> clean = s -> {
+            if (s == null) return "";
+            s = s.replace("\uFEFF", "");         // remove BOM
+            s = s.trim();                        // remove espaços nas pontas
+            s = s.replaceAll("^\"+|\"+$", "");   // remove aspas iniciais/finais sobrando
+            s = s.replace("\\", "/");            // normaliza barras
+            return s;
+        };
+
+        String raw = arqAtual;
+        String cleaned = clean.apply(raw);
+
+        java.util.LinkedHashSet<String> candidatos = new java.util.LinkedHashSet<>();
+        if (!cleaned.isBlank()) candidatos.add(cleaned);
+        if (!raw.equals(cleaned)) candidatos.add(raw);
+
+        int slash = cleaned.lastIndexOf('/');
+        if (slash != -1) {
+            String somenteNome = cleaned.substring(slash + 1);
+            candidatos.add(somenteNome);
+            candidatos.add("src/" + somenteNome);
+            candidatos.add("src/br/ufjf/dcc/Replay/" + somenteNome);
+        } else {
+            candidatos.add("src/" + cleaned);
+            candidatos.add("src/br/ufjf/dcc/Replay/" + cleaned);
+        }
+
+        StringBuilder resultado = new StringBuilder();
+        IOException ultimoErro = null;
+        for (String cand : candidatos) {
+            if (cand == null || cand.isBlank()) continue;
+            System.out.println("▶ Tentando abrir: [" + cand + "]");
+            try (java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader(cand))) {
+                String linha;
+                int cont = 1;
+                resultado.append("----- 🎮 Início do Replay (").append(cand).append(") -----\n");
+                while ((linha = br.readLine()) != null) {
+                    resultado.append(cont++).append("️⃣  ").append(linha).append("\n");
+                }
+                resultado.append("------ 🏁 Fim do Replay ------\n");
+
+                // 👇 imprime o conteúdo acumulado aqui
+                System.out.println(resultado.toString());
+                System.out.println("✅ Replay lido com sucesso: " + cand);
+                return;
+            } catch (IOException e) {
+                ultimoErro = e;
+                System.out.println("   ❌ Falha ao abrir: " + e.getMessage());
+            }
+        }
+
+        System.out.println("❌ Não foi possível abrir nenhum dos caminhos testados.");
+        System.out.println("Caminhos tentados:");
+        for (String c : candidatos) System.out.println("  - " + c);
+        if (ultimoErro != null) System.out.println("Último erro: " + ultimoErro.getMessage());
+        System.out.println("Dica: verifique se o arquivo existe, se o JSON não contém aspas extras/BOM,");
+        System.out.println("e se chamou Replay.carregarConfig() antes de mostrar o replay.");
+    }
+
 }
