@@ -9,6 +9,7 @@ public class Replay {
     private static int indice;
     private static String arqBase;
     private static String arqAtual;
+    private static String arqTemp;
 
     private static int extraiNumero(String nome) {
         try {
@@ -24,6 +25,12 @@ public class Replay {
         return -1;
     }
 
+    public  static  void reproduzirReplay(String caminhoReplay){
+        arqTemp = arqAtual;
+        arqAtual = caminhoReplay;
+        mostrarReplay();
+        arqAtual = arqTemp;
+    }
 
     public static void carregarConfig() {
         String caminhoJson = "src/br/ufjf/dcc/Replay/arqJogo.json";
