@@ -12,9 +12,6 @@ public class Bot {
     private Mao mao;
 
     private final Random random = new Random();
-
-
-
     private static  String[] FRASES_ATAQUE = {
             "Sério? Você tentou *isso*? É como se uma formiga tentasse arranhar o vidro.",
             "Não me faça rir. O único resultado possível é a sua falha patética.",
