@@ -154,4 +154,11 @@ public class Mao {
     public boolean removerCarta(Carta carta) {
         return this.mao.remove(carta);
     }
+
+    public Carta getCarta(int indice) {
+        if (indice >= 0 && indice < this.mao.size()) {
+            return this.mao.get(indice);
+        }
+        return null;
+    }
 }
