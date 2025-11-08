@@ -10,7 +10,7 @@ public class Calcular {
             return 0;
         }
         int resto = vida%10;
-        if(resto>5){
+        if(resto>=5){
             return vida + (10 - resto);
         } else {
             return vida - resto;

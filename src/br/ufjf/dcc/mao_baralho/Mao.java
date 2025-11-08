@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Mao {
     private List<Carta> mao;
@@ -138,5 +139,19 @@ public class Mao {
         for (Carta carta : this.mao) {
             carta.imprimirCarta();
         }
+    }
+
+    public List<Carta> getCartasDoTipo(String tipo) {
+        return this.mao.stream()
+                .filter(carta -> carta.getTipo().equalsIgnoreCase(tipo))
+                .collect(Collectors.toList());
+    }
+
+    public List<Carta> getMao() {
+        return this.mao;
+    }
+
+    public boolean removerCarta(Carta carta) {
+        return this.mao.remove(carta);
     }
 }
