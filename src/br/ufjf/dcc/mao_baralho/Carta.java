@@ -15,14 +15,15 @@ public class Carta {
     }
 
     public void imprimirCarta() {
-        System.out.println("Nome: " + this.nome);
-        System.out.println("Tipo: " + this.tipo);
-        System.out.println("Poder: " + this.poder);
-        System.out.println("Custo: " + this.custo);
+        System.out.print("Nome: " + this.nome + ", ");
+        System.out.print("Tipo: " + this.tipo + ", ");
+        System.out.print("Poder: " + this.poder + ", ");
+        System.out.print("Custo: " + this.custo+ ", ");
         if(!this.efeito.equals( "Não tem efeito") ) {
-            System.out.println("Efeito: " + this.efeito);
+            System.out.print("Efeito: " + this.efeito + ", ");
         }
-        System.out.println("Descricao: " + this.descricao);
+        System.out.print("Descricao: " + this.descricao+ ", ");
+        System.out.println("");
     }
 
     public String getTipo() {

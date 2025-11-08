@@ -28,7 +28,7 @@ public class Baralho {
         }
 
     }
-    public void carrregarCarta(String caminhoCSV){
+    public void carregarCarta(String caminhoCSV){
         try(BufferedReader br = new BufferedReader(new FileReader(caminhoCSV))) {
             String linha, tipoArquivo = tipoArquivo(caminhoCSV);
             boolean primeiraLinha = true;
@@ -39,7 +39,7 @@ public class Baralho {
                 }
                 String[] valores = linha.split(",");
                 String nome, tipo, efeito, descricao;
-                int custo, duracao;
+                int custo;
                 double poder;
                 if (tipoArquivo.equals("Suporte")) {
                     if (valores.length < 6) continue;
@@ -58,14 +58,9 @@ public class Baralho {
                     custo = Integer.parseInt(valores[3].trim());
                     descricao = valores[4].trim();
                     efeito = "Não tem efeito";
-
                 }
                 Carta carta = new Carta(nome, tipo, descricao, poder, custo, efeito);
                 cartas.add(carta);
-
-
-                System.out.println("✅ Cartas carregadas de " + caminhoCSV + " — Tipo: " + tipoArquivo + " (" + cartas.size() + " no total)");
-
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -77,8 +72,8 @@ public class Baralho {
     }
 
     private void inicializarCarta(){
-        carrregarCarta("src/br/ufjf/dcc/ArquivoCarta/ataque.csv");
-        carrregarCarta("src/br/ufjf/dcc/ArquivoCarta/defesa.csv");
-        carrregarCarta("src/br/ufjf/dcc/ArquivoCarta/suporte.csv");
+        carregarCarta("src/br/ufjf/dcc/ArquivoCarta/ataque.csv");
+        carregarCarta("src/br/ufjf/dcc/ArquivoCarta/defesa.csv");
+        carregarCarta("src/br/ufjf/dcc/ArquivoCarta/suporte.csv");
     }
 }

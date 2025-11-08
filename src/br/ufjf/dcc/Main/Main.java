@@ -4,7 +4,7 @@ import br.ufjf.dcc.mao_baralho.Mao;
 import br.ufjf.dcc.mao_baralho.Baralho;
 
 void main() {
-    Mao a = new Mao(new Baralho());
-    a.exibirMao();
-    a.exibirCartaDetalhada(9);
+    Mao m1 = new Mao();
+    m1.escolherCartas();
+    m1.exibirMao();
 }
