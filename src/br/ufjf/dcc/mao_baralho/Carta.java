@@ -22,8 +22,9 @@ public class Carta {
         if(!this.efeito.equals( "Não tem efeito") ) {
             System.out.print("Efeito: " + this.efeito + ", ");
         }
-        System.out.print("Descricao: " + this.descricao+ ", ");
-        System.out.println("");
+        System.out.print("Descricao: " + this.descricao+ ";\n");
+        System.out.println("-----------------------------------------------------------------------------------" +
+                "------------------------------------------------------------");
     }
 
     public String getTipo() {
