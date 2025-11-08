@@ -55,7 +55,6 @@ public class Mao {
 
                 try {
                     int idxs = Integer.parseInt(indiceStr) - 1;
-
                     if (idxs >= 0 && idxs < listaDeOrigem.size()) {
                         this.mao.add(listaDeOrigem.get(idxs));
                         cartasAdicionadas++;
@@ -69,9 +68,6 @@ public class Mao {
         }
         if (cartasAdicionadas < limite) {
             int cartasFaltando = limite - cartasAdicionadas;
-            System.out.println("Voce escolheu " + cartasAdicionadas + " cartas. Adicionando " + cartasFaltando +
-                    " cartas aleatorias de " + tipo + "...");
-
             for (int i = 0; i < cartasFaltando; i++) {
                 int indiceAleatorio = rand.nextInt(listaDeOrigem.size());
                 this.mao.add(listaDeOrigem.get(indiceAleatorio));
@@ -84,30 +80,26 @@ public class Mao {
         int cont = 0, id = 1;
         while(cont<LIMITE_CARTAS){
             if(cont<3){
-                System.out.println("CARTAS DE ATAQUE:");
-                System.out.println("-----------------------------------------------------------------------------------"
-                        + "-----------------------------------------------------------");
+                System.out.println("CARTAS DE ATAQUE: \n");
                 for(Carta carta: this.ataques){
                     System.out.print("ID: " + id + " - ");
                     carta.imprimirCarta();
                     id++;
                 }
-                System.out.println("Insira a cartas de ataque desejadas(indices e com espaçamento): ");
+                System.out.println("Insira a cartas de ataque desejadas(IDs e com espaçamento): ");
                 String indice = teclado.nextLine();
                 String[] listaIdx = indice.split(" ");
                 adicionarCarta("ataque", listaIdx);
                 id = 1;
                 cont = 3;
             } else if (cont>=3 && cont<7) {
-                System.out.println("CARTAS DE DEFESA:");
-                System.out.println("-----------------------------------------------------------------------------------"
-                        + "-----------------------------------------------------------");
+                System.out.println("CARTAS DE DEFESA: \n");
                 for(Carta carta: this.defesas){
                     System.out.print("ID: " + id + " - ");
                     carta.imprimirCarta();
                     id++;
                 }
-                System.out.println("Insira a cartas de defesa desejadas(indices e com espaçamento):");
+                System.out.println("Insira a cartas de defesa desejadas(IDs e com espaçamento):");
                 String indice = teclado.nextLine();
                 String[] listaIdx = indice.split(" ");
                 adicionarCarta("defesa", listaIdx);
@@ -115,15 +107,13 @@ public class Mao {
                 cont = 7;
             }
             else{
-                System.out.println("CARTAS DE SUPORTE:");
-                System.out.println("-----------------------------------------------------------------------------------"
-                        + "-----------------------------------------------------------");
+                System.out.println("CARTAS DE SUPORTE: \n");
                 for(Carta carta: this.suportes){
                     System.out.print("ID: " + id + " - ");
                     carta.imprimirCarta();
                     id++;
                 }
-                System.out.println("Insira a cartas de suporte desejadas(indices e com espaçamento):");
+                System.out.println("Insira a cartas de suporte desejadas(IDs e com espaçamento):");
                 String indice = teclado.nextLine();
                 String[] listaIdx = indice.split(" ");
                 adicionarCarta("suporte", listaIdx);
@@ -146,7 +136,7 @@ public class Mao {
     public void exibirMao() {
         System.out.println("Cartas da Mão (" + this.mao.size() + "/" + LIMITE_CARTAS + "):");
         for (Carta carta : this.mao) {
-            System.out.println(" - " + carta.nome + " [" + carta.tipo + "]");
+            carta.imprimirCarta();
         }
     }
 }

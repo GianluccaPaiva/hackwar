@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
 
-import static java.lang.Thread.sleep;
-
 public class Baralho {
     private List<Carta> cartas;
 
