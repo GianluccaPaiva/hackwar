@@ -5,6 +5,6 @@ import br.ufjf.dcc.mao_baralho.Baralho;
 
 void main() {
     Mao m1 = new Mao();
-    m1.escolherCartas();
+    m1.selecaoAutomatica();
     m1.exibirMao();
 }

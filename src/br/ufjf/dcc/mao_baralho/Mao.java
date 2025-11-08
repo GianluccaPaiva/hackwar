@@ -133,11 +133,20 @@ public class Mao {
         }
     }
 
+    public void limparMao() {
+        this.mao.clear();
+    }
+
+    public void selecaoAutomatica() {
+        adicionarCarta("ataque", new String[]{});
+        adicionarCarta("defesa", new String[]{});
+        adicionarCarta("suporte", new String[]{});
+    }
+
     public void exibirMao() {
         System.out.println("Cartas da Mão (" + this.mao.size() + "/" + LIMITE_CARTAS + "):");
         for (Carta carta : this.mao) {
             System.out.println(" - " + carta.nome + " [" + carta.tipo + "]");
         }
     }
-
 }
