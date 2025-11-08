@@ -38,4 +38,12 @@ public class Carta {
     public int getCusto() {
         return this.custo;
     }
+
+    public String getEfeito() {
+        return this.efeito;
+    }
+
+    public String getNome() {
+        return this.nome;
+    }
 }
