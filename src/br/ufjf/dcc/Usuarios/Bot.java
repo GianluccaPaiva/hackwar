@@ -78,9 +78,7 @@ public class Bot {
             }
         }
 
-        // 4. Reação Padrão/Fallback: Se não encontrou uma reação direta, joga a carta de maior poder que puder pagar
         if (cartaEscolhida == null) {
-            // Tenta a carta de maior poder na mão
             cartaEscolhida = this.mao.getMao().stream()
                     .filter(c -> c.getCusto() <= this.energia)
                     .max((c1, c2) -> Double.compare(c1.getPoder(), c2.getPoder()))
@@ -91,8 +89,6 @@ public class Bot {
         if (cartaEscolhida != null) {
             System.out.println("✅ Bot reagiu com: " + cartaEscolhida.getNome() + " (" + cartaEscolhida.getTipo() + " - Custo: " + cartaEscolhida.getCusto() + ")");
             this.mao.removerCarta(cartaEscolhida);
-            // A energia final será calculada fora deste método (ver Calcular.java),
-            // mas o custo é subtraído aqui para simular a indisponibilidade imediata de energia.
             this.energia -= cartaEscolhida.getCusto();
         } else {
             System.out.println("❌ Bot não possui energia ou carta ideal para reação e passa a vez.");
