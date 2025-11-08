@@ -119,7 +119,7 @@ public class Bot {
             } else if (efeitoInimigo.contains("AUMENTA_ATAQUE") || efeitoInimigo.contains("DIMINUI_ATAQUE")) {
                 System.out.println(this.nome + " - "  +  this.id + ": " + selecionarFrase(FRASES_SUPORTE_BUFF_DEBUFF));
             } else {
-                System.out.println("CAPITÃO PÁTRIA: Seu movimento é irrelevante para a minha vitória.");
+                System.out.println(this.nome + " - "  +  this.id + ": " + "Seu movimento é irrelevante para a minha vitória.");
             }
         }
 
