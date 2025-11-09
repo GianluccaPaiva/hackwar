@@ -12,13 +12,18 @@ public class Hacker {
     private int vida, energia;
     private Mao mao;
 
-    public Hacker(String nome, String id) {
+    public Hacker(String nome, String id, String tipoSelecao) {
         this.nome = nome;
         this.id = id;
         this.vida = MAX_VIDA;
         this.energia = MAX_ENERGIA;
         this.mao = new Mao();
-        this.mao.escolherCartas();
+        if(tipoSelecao.equalsIgnoreCase("sim")){
+            this.mao.escolherCartas();
+        }
+        else{
+            this.mao.selecaoAutomatica();
+        }
     }
 
     public void exibirStatus() {
@@ -34,16 +39,27 @@ public class Hacker {
         int energiaGasta = 0;
 
         while (true) {
+            if(energiaDisponivel == 0){
+                System.out.println("Energia esgotada. Passou a vez!.");
+                break;
+            }
             System.out.println("\nEnergia Restante: " + (energiaDisponivel - energiaGasta)  + "/" + MAX_ENERGIA);
             this.mao.exibirMao();
+            System.out.println("Caso queira entregar o sistema, digite -1.");
             System.out.print("Digite o ID da carta para jogar (ou 0 para 'Confirmar e Passar a Vez'): ");
 
-            int id = -1;
+            int id;
             try {
                 id = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Entrada inválida. Digite um número.");
                 continue;
+            }
+
+            if(id == -1){
+                System.out.println(this.nome + " entregou o sistema.");
+                this.vida = 0;
+                break;
             }
 
             if (id == 0) {
