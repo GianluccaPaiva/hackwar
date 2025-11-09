@@ -49,7 +49,7 @@ public class Replay {
             }
         } catch (IOException e) {
             System.out.println("❌ Erro ao ler config: " + e.getMessage());
-            arqBase = "src/replay_jogo_1.txt";
+            arqBase = "replay_jogo_1.txt";
             arqAtual = arqBase;
             indice = 1;
         }
@@ -120,7 +120,6 @@ public class Replay {
 
         System.out.println("🔁 Novo replay criado: " + arqAtual);
 
-        // Atualiza o JSON corretamente
         String caminhoJson = "src/br/ufjf/dcc/Replay/arqJogo.json";
         try (FileWriter fw = new FileWriter(caminhoJson)) {
             String json = "{\"nomeArqReplay\": \"" + arqAtual + "\"}";
@@ -132,10 +131,30 @@ public class Replay {
         }
     }
 
-    public static void reiniciarListaReplay(){
+
+    public static void deletarTodosReplay() {
         indice = 1;
-        arqAtual = arqBase;
-        System.out.println("🔄 Replay reiniciado para: " + arqAtual);
+        arqBase = "replay_jogo_1.txt";
+        int sub = arqBase.lastIndexOf("_");
+        int ponto = arqBase.lastIndexOf(".");
+        if (sub != -1 && ponto != -1) {
+            arqAtual = arqBase.substring(0, sub + 1) + indice + arqBase.substring(ponto);
+        } else {
+            arqAtual = arqBase + indice;
+        }
+
+        System.out.println("🔁 Novo replay criado: " + arqAtual);
+
+        String caminhoJson = "src/br/ufjf/dcc/Replay/arqJogo.json";
+        try (FileWriter fw = new FileWriter(caminhoJson)) {
+            String json = "{\"nomeArqReplay\": \"" + arqAtual + "\"}";
+            fw.write(json);
+            fw.flush();
+            System.out.println("💾 JSON atualizado: " + caminhoJson);
+        } catch (IOException e) {
+            System.out.println("❌ Erro ao atualizar JSON: " + e.getMessage());
+        }
+
     }
 
     public static void mostrarReplay() {
@@ -170,6 +189,27 @@ public class Replay {
             System.out.println("❌ Erro ao ler replay: " + e.getMessage());
             System.out.println("⚠️ Dica: verifique se o arquivo existe em relação ao diretório do projeto.");
         }
+    }
+
+    public static int getIndice(){
+        String caminhoJson = "src/br/ufjf/dcc/Replay/arqJogo.json";
+        try (BufferedReader br = new BufferedReader(new FileReader(caminhoJson))) {
+            String linha = br.readLine();
+            if (linha != null && linha.contains(":")) {
+                int inicio = linha.indexOf(":") + 2;
+                int fim = linha.lastIndexOf("\"");
+                arqBase = linha.substring(inicio, fim).replace("\\", "/");
+                indice = extraiNumero(arqBase);
+                if (indice == -1) indice = 1;
+            } else {
+                throw new IOException("Formato de JSON inválido");
+            }
+        } catch (IOException e) {
+            System.out.println("❌ Erro ao ler config: " + e.getMessage());
+            arqBase = "replay_jogo_1.txt";
+            indice = 1;
+        }
+        return indice;
     }
 
 }
