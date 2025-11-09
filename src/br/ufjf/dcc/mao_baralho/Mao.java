@@ -15,6 +15,10 @@ public class Mao {
     private List<Carta> defesas = new ArrayList<>();
     private List<Carta> suportes = new ArrayList<>();
 
+    public Mao(List<Carta> maoFeita) {
+        this.mao = maoFeita;
+    }
+
     public Mao() {
         this.mao = new ArrayList<>(LIMITE_CARTAS);
         this.baralho = new Baralho();
@@ -149,10 +153,6 @@ public class Mao {
                 .collect(Collectors.toList());
     }
 
-    public List<Carta> getMao() {
-        return this.mao;
-    }
-
     public void removerCarta(Carta carta) {
         this.mao.remove(carta);
     }
@@ -162,5 +162,13 @@ public class Mao {
             return this.mao.get(indice);
         }
         return null;
+    }
+
+    public int size() {
+        return this.mao.size();
+    }
+
+    public List<Carta> getMao(){
+        return this.mao;
     }
 }

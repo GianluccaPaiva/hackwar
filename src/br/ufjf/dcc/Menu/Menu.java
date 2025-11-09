@@ -169,7 +169,7 @@ public class Menu {
     public static int Menu() {
         final String GREEN = "\u001B[32m";
         final String RESET = "\u001B[0m";
-        exibirAnimacaoEntradaMaisBonita();
+        //exibirAnimacaoEntradaMaisBonita();
         limparTerminal();
         exibirTitulo();
         System.out.println(GREEN);

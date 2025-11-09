@@ -43,7 +43,8 @@ public class Hacker {
                 System.out.println("Energia esgotada. Passou a vez!.");
                 break;
             }
-            System.out.println("\nEnergia Restante: " + (energiaDisponivel - energiaGasta)  + "/" + MAX_ENERGIA);
+            System.out.println("\n\nHacker: " + this.nome);
+            System.out.println("Energia Restante: " + (energiaDisponivel - energiaGasta)  + "/" + MAX_ENERGIA);
             this.mao.exibirMao();
             System.out.println("Caso queira entregar o sistema, digite -1.");
             System.out.print("Digite o ID da carta para jogar (ou 0 para 'Confirmar e Passar a Vez'): ");
@@ -86,36 +87,39 @@ public class Hacker {
                 System.out.println("-->> Adicionado: " + carta.getNome());
             }
         }
-
         return cartasParaJogar;
     }
 
     public int getVida() {
-        return vida;
+        return this.vida;
     }
     public void setVida(int vida) {
         this.vida = vida;
     }
 
     public int getEnergia() {
-        return energia;
+        return this.energia;
     }
     public void setEnergia(int energia) {
         this.energia = energia;
     }
 
     public Mao getMao() {
-        return mao;
+        return this.mao;
     }
 
-    public void setMao(Mao mao) {
-        this.mao = mao;
+    public int getMaoSize() {
+        return this.mao.size();
+    }
+
+    public void setMao(List<Carta> novaMao) {
+        this.mao = new Mao(novaMao);
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
     public String getId() {
-        return id;
+        return this.id;
     }
 }
