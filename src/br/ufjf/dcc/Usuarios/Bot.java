@@ -13,7 +13,7 @@ public class Bot {
     private Mao mao;
 
     public Bot() {
-        this.nome = "Bot";
+        this.nome = "BOT";
         this.id = "202565001";
         this.vida = MAX_VIDA;
         this.energia = MAX_ENERGIA;
@@ -30,7 +30,8 @@ public class Bot {
             "Você joga com tanta *esperança*. É a única coisa que eu não vou destruir.",
             "Isso é o melhor que a sua mediocridade pode oferecer? Estou *desapontado*.",
             "Eu sou o limite do seu poder. Você não pode me afetar.",
-            "Seu destino é me dar a vitória, não resistir."
+            "Seu destino é me dar a vitória, não resistir.",
+            "Não Grita. shhhhhh, vai ser mais rápido assim."
     };
 
     private static String[] FRASES_DEFESA = {
@@ -41,7 +42,8 @@ public class Bot {
             "O que é um escudo para um Deus? Uma formalidade.",
             "Seu medo é palpável. Continue a se esconder, isso me diverte.",
             "Eu não me defendo, eu domino. Você se defende, você perde.",
-            "Você está desperdiçando uma boa carta. Devia ter usado para me agradar."
+            "Você está desperdiçando uma boa carta. Devia ter usado para me agradar.",
+            "Bate na massa"
     };
 
     private static String[] FRASES_SUPORTE_BUFF_DEBUFF = {
@@ -195,7 +197,6 @@ public class Bot {
         } else {
             System.out.println(this.nome + " jogou " + cartasParaJogar.size() + " cartas.");
         }
-
         return cartasParaJogar;
     }
 
