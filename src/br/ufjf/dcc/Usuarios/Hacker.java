@@ -1,5 +1,10 @@
 package br.ufjf.dcc.Usuarios;
+import br.ufjf.dcc.mao_baralho.Carta;
 import br.ufjf.dcc.mao_baralho.Mao;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Hacker {
     private String nome, id;
@@ -22,6 +27,53 @@ public class Hacker {
         this.mao.exibirMao();
     }
 
+    public List<Carta> escolherJogada() {
+        Scanner scanner = new Scanner(System.in);
+        List<Carta> cartasParaJogar = new ArrayList<>();
+        int energiaDisponivel = this.getEnergia();
+        int energiaGasta = 0;
+
+        while (true) {
+            System.out.println("\nEnergia Restante: " + (energiaDisponivel - energiaGasta)  + "/" + MAX_ENERGIA);
+            this.mao.exibirMao();
+            System.out.print("Digite o ID da carta para jogar (ou 0 para 'Confirmar e Passar a Vez'): ");
+
+            int id = -1;
+            try {
+                id = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida. Digite um número.");
+                continue;
+            }
+
+            if (id == 0) {
+                if (cartasParaJogar.isEmpty()) {
+                    System.out.println(this.nome + " passou a vez.");
+                } else {
+                    System.out.println(this.nome + " confirmou a jogada.");
+                }
+                break;
+            }
+
+            Carta carta = this.mao.getCarta(id - 1);
+
+            if (carta == null) {
+                System.out.println("ID inválido. Tente novamente.");
+            } else if (cartasParaJogar.contains(carta)) {
+                System.out.println("Você já escolheu essa carta. Tente outra.");
+            } else if ((energiaGasta + carta.getCusto()) > energiaDisponivel) {
+                System.out.println("Energia insuficiente para jogar " + carta.getNome());
+            } else {
+                cartasParaJogar.add(carta);
+                this.mao.removerCarta(carta);
+                energiaGasta += carta.getCusto();
+                System.out.println("-->> Adicionado: " + carta.getNome());
+            }
+        }
+
+        return cartasParaJogar;
+    }
+
     public int getVida() {
         return vida;
     }
@@ -39,7 +91,15 @@ public class Hacker {
     public Mao getMao() {
         return mao;
     }
+
     public void setMao(Mao mao) {
         this.mao = mao;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+    public String getId() {
+        return id;
     }
 }

@@ -135,8 +135,10 @@ public class Mao {
     }
 
     public void exibirMao() {
-        System.out.println("Cartas da Mão (" + this.mao.size() + "/" + LIMITE_CARTAS + "):");
-        for (Carta carta : this.mao) {
+        System.out.println("Cartas na Sua Mão (" + this.mao.size() + "/" + LIMITE_CARTAS + ")");
+        for (int i = 0; i < this.mao.size(); i++) {
+            Carta carta = this.mao.get(i);
+            System.out.print("ID: " + (i + 1) + " - ");
             carta.imprimirCarta();
         }
     }
@@ -151,8 +153,8 @@ public class Mao {
         return this.mao;
     }
 
-    public boolean removerCarta(Carta carta) {
-        return this.mao.remove(carta);
+    public void removerCarta(Carta carta) {
+        this.mao.remove(carta);
     }
 
     public Carta getCarta(int indice) {
