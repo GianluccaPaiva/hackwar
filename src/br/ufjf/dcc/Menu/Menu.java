@@ -4,6 +4,9 @@ import br.ufjf.dcc.Replay.Replay;
 
 public class Menu {
     private static int selecionarTipoJogo(Scanner teclado) {
+        final String GREEN = "\u001B[32m";
+        final String RESET = "\u001B[0m";
+        System.out.println(GREEN);
         System.out.println("Selecione o tipo de jogo:");
         System.out.println("1. Jogo Multiplayer");
         System.out.println("2. Jogo Com Bot");
@@ -11,18 +14,24 @@ public class Menu {
         int tipoJogo = teclado.nextInt();
         if (tipoJogo == 1) {
             System.out.println("Iniciando Jogo Multiplayer...");
+            System.out.println(RESET);
             return 1;
         } else if (tipoJogo == 2) {
             System.out.println("Iniciando Jogo Com Bot...");
+            System.out.println(RESET);
             return 2;
         } else {
             System.out.println("Opção inválida. Retornando ao menu principal.");
+            System.out.println(RESET);
             Menu.Menu();
             return 0;
         }
     }
 
     private static void selecionarReplay(Scanner teclado) {
+        final String GREEN = "\u001B[32m";
+        final String RESET = "\u001B[0m";
+        System.out.println(GREEN);
         System.out.println("Digite o número do replay que deseja carregar: " + "(Quantidade de replays atuais -> " + Replay.getIndice() + ")");
         int numeroReplay = teclado.nextInt();
         if (numeroReplay <= 0) {
@@ -31,6 +40,7 @@ public class Menu {
         }
         String caminhoReplay = "replay_jogo_" + numeroReplay + ".txt";
         System.out.println("Carregando replay do arquivo: " + caminhoReplay);
+        System.out.println(RESET);
         Replay.reproduzirReplay(caminhoReplay);
     }
 
@@ -43,6 +53,9 @@ public class Menu {
     }
 
     private static void deletarTodosReplay(Scanner teclado) {
+        final String GREEN = "\u001B[32m";
+        final String RESET = "\u001B[0m";
+        System.out.println(GREEN);
         System.out.println("Tem certeza que deseja deletar todos os replays? (s/n)");
         String resposta = teclado.nextLine();
         if (resposta.equalsIgnoreCase("s")) {
@@ -51,9 +64,115 @@ public class Menu {
         } else {
             System.out.println("Operação cancelada. Retornando ao menu principal.");
         }
+        System.out.println(RESET);
+    }
+
+    private static void exibirTitulo() {
+        final String GREEN = "\u001B[32m";
+        final String RESET = "\u001B[0m";
+
+        System.out.println(GREEN);
+        System.out.println("===================================================");
+        System.out.println("                                                   ");
+        System.out.println("                  ################                 ");
+        System.out.println("              ########################             ");
+        System.out.println("            ############################           ");
+        System.out.println("          ################################         ");
+        System.out.println("          ################################         ");
+        System.out.println("        ####################################       ");
+        System.out.println("        ####################################       ");
+        System.out.println("        ######################################     ");
+        System.out.println("      ########################################     ");
+        System.out.println("      ########################################     ");
+        System.out.println("      ########      ++##########      ########     ");
+        System.out.println("      MM####          ########          ######     ");
+        System.out.println("      @@####            @@##..          @@####     ");
+        System.out.println("      --@@##            ######          MM####     ");
+        System.out.println("        ####          ########          ####       ");
+        System.out.println("        ####################################       ");
+        System.out.println("        ################    ################       ");
+        System.out.println("      --##############        ################     ");
+        System.out.println("      @@##############        ################     ");
+        System.out.println("        ##############  ::MM  ##############       ");
+        System.out.println("                ####################               ");
+        System.out.println("                @@##################               ");
+        System.out.println("                  ##  ####++##  ####               ");
+        System.out.println("                ::##  ####++##  ####               ");
+        System.out.println("                                                   ");
+        System.out.println("===================================================");
+        System.out.println("            H A C K W A R   I N I C I A D O        ");
+        System.out.println("===================================================");
+        System.out.println(RESET);
+    }
+
+    private static void exibirAnimacaoEntradaMaisBonita() {
+        final String GREEN = "\u001B[32m";
+        final String RESET = "\u001B[0m";
+        String[] carregamento = {"\\", "|", "/", "-"};
+        String[] modulos = {
+                "[>] Módulo de Kernel Carregado... OK",
+                "[>] Dependências de I/O Carregadas... OK",
+                "[>] Conexão com Servidor de Cartas... OK",
+                "[>] Otimizando Algoritmos de Combate...",
+                "[>] Iniciando Interface do Usuário...",
+                "[>] Varredura de Segurança Concluída... ACESSO PERMITIDO"
+        };
+        System.out.println(GREEN);
+
+        try {
+            System.out.println("---------------------------------------------------");
+            System.out.println("        INICIANDO O SISTEMA HACKWAR V1.0");
+            System.out.println("---------------------------------------------------");
+
+
+            for (int i = 0; i < 60; i++) {
+                String indicador = carregamento[i % carregamento.length];
+                System.out.print("\r[BOOT] Status: Processando... " + indicador + " | " + i + "%");
+                Thread.sleep(30);
+            }
+            System.out.println("\r[BOOT] Status: Processando... | CONCLUÍDO (100%)");
+            Thread.sleep(500);
+
+
+            int delayPasso = 100;
+            int delayFinal = 1000;
+
+            System.out.println("\n[SCAN] Verificação de Integridade:");
+            Thread.sleep(delayFinal);
+
+            for (String modulo : modulos) {
+                System.out.print("   ");
+                for (char c : modulo.toCharArray()) {
+                    System.out.print(c);
+                    Thread.sleep(delayPasso / 20);
+                }
+                System.out.println();
+                Thread.sleep(delayFinal);
+                delayFinal = 500;
+            }
+
+            System.out.println("\n>>> PRESSIONE ENTER PARA ACESSAR O TERMINAL <<<");
+            new java.util.Scanner(System.in).nextLine();
+
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        System.out.println(RESET);
+    }
+
+    private static void limparTerminal() {
+        for (int i = 0; i < 50; ++i) {
+            System.out.println();
+        }
     }
 
     public static int Menu() {
+        final String GREEN = "\u001B[32m";
+        final String RESET = "\u001B[0m";
+        exibirAnimacaoEntradaMaisBonita();
+        limparTerminal();
+        exibirTitulo();
+        System.out.println(GREEN);
         System.out.println("Menu Principal");
         System.out.println("1. Iniciar Jogo");
         System.out.println("2. Carregar Replay");
@@ -85,6 +204,7 @@ public class Menu {
             Menu();
             return 0;
         }
+        System.out.println(RESET);
         return 0;
     }
 }
