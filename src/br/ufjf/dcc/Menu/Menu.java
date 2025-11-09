@@ -17,7 +17,8 @@ public class Menu {
             return 2;
         } else {
             System.out.println("Opção inválida. Retornando ao menu principal.");
-            return -1;
+            Menu.Menu();
+            return 0;
         }
     }
 
