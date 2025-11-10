@@ -128,10 +128,6 @@ public class Mao {
         }
     }
 
-    public void limparMao() {
-        this.mao.clear();
-    }
-
     public void selecaoAutomatica() {
         adicionarCarta("ataque", new String[]{});
         adicionarCarta("defesa", new String[]{});
@@ -139,7 +135,7 @@ public class Mao {
     }
 
     public void exibirMao() {
-        System.out.println("Cartas na Sua Mão (" + this.mao.size() + "/" + LIMITE_CARTAS + ")");
+        System.out.println("Cartas na Sua Mão (" + this.mao.size() + "/" + LIMITE_CARTAS + "):");
         for (int i = 0; i < this.mao.size(); i++) {
             Carta carta = this.mao.get(i);
             System.out.print("ID: " + (i + 1) + " - ");

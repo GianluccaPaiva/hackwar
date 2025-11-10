@@ -30,6 +30,7 @@ public class Hacker {
         System.out.println("Hacker: " + this.nome + " (ID: " + this.id + ")");
         System.out.println("Vida: " + this.vida + "/" + MAX_VIDA + "  " + "Energia: " + this.energia + "/" + MAX_ENERGIA);
         this.mao.exibirMao();
+        System.out.print("\n");
     }
 
     public List<Carta> escolherJogada() {
@@ -39,10 +40,6 @@ public class Hacker {
         int energiaGasta = 0;
 
         while (true) {
-            if(energiaDisponivel == 0){
-                System.out.println("Energia esgotada. Passou a vez!.");
-                break;
-            }
             System.out.println("\n\nHacker: " + this.nome);
             System.out.println("Energia Restante: " + (energiaDisponivel - energiaGasta)  + "/" + MAX_ENERGIA);
             this.mao.exibirMao();
@@ -85,6 +82,10 @@ public class Hacker {
                 this.mao.removerCarta(carta);
                 energiaGasta += carta.getCusto();
                 System.out.println("-->> Adicionado: " + carta.getNome());
+            }
+            if(energiaDisponivel - energiaGasta == 0){
+                System.out.println("Energia esgotada. Passou a vez!.");
+                break;
             }
         }
         return cartasParaJogar;

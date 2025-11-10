@@ -1,18 +1,18 @@
 
 package br.ufjf.dcc.Main;
+import br.ufjf.dcc.GerenciadoresDeJogo.GerenciadorMultiplayer;
+import br.ufjf.dcc.GerenciadoresDeJogo.GerenciadorSinglePlayer;
 import br.ufjf.dcc.Menu.Menu;
 import br.ufjf.dcc.Usuarios.Bot;
 import br.ufjf.dcc.Usuarios.Hacker;
 import br.ufjf.dcc.mao_baralho.Carta;
 import br.ufjf.dcc.mao_baralho.Mao;
-import br.ufjf.dcc.CalculosDoCombate.Calcular;
-
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
         int opcao = Menu.Menu();
@@ -39,77 +39,62 @@ public class Main {
             List<Carta> deckHacker2Copia = new ArrayList<>();
             Mao deckHacker1 = hacker1.getMao();
             Mao deckHacker2 = hacker2.getMao();
-
-            for(Carta carta : deckHacker1.getMao()){
-                deckHacker1Copia.add(carta);
-            }
-            for(Carta carta : deckHacker2.getMao()){
-                deckHacker2Copia.add(carta);
-            }
+            deckHacker1Copia.addAll(deckHacker1.getMao());
+            deckHacker2Copia.addAll(deckHacker2.getMao());
 
             System.out.println("Decks montados. A batalha começa!");
 
-            Random quemComeca = new Random();
-            int primeiro = 0;
-
+            int i = 0;
             while (true) {
-                if (primeiro == 0) {
-                    System.out.println("\n========= NOVA RODADA ==========");
-                    hacker1.exibirStatus();
-                    hacker2.exibirStatus();
-
-                    List<Carta> jogadaHacker1 = hacker1.escolherJogada();
-                    if (hacker1.getVida() <= 0) {
-                        System.out.println("\n--- FIM DE JOGO ---");
-                        System.out.println(hacker2.getNome() + " venceu!");
+                if (i%2 == 0) {
+                    int estado = GerenciadorMultiplayer.GerenciarJogoMultiplayer(hacker1, hacker2,
+                            deckHacker1Copia, deckHacker2Copia);
+                    if(estado == -1){
                         break;
-                    }
-
-                    List<Carta> jogadaHacker2 = hacker2.escolherJogada();
-                    if (hacker2.getVida() <= 0) {
-                        System.out.println("\n--- FIM DE JOGO ---");
-                        System.out.println(hacker2.getNome() + " venceu!");
-                        break;
-                    }
-
-                    Calcular.ResultadoTurno resultado = Calcular.calcularResultado(
-                            hacker1.getVida(), hacker1.getEnergia(), jogadaHacker1,
-                            hacker2.getVida(), hacker2.getEnergia(), jogadaHacker2
-                    );
-
-                    hacker1.setVida(resultado.vidaFinalJ1());
-                    hacker1.setEnergia(resultado.energiaFinalJ1());
-                    hacker2.setVida(resultado.vidaFinalJ2());
-                    hacker2.setEnergia(resultado.energiaFinalJ2());
-
-                    System.out.println("--- Consolidação da Rodada ---");
-                    System.out.println(hacker1.getNome() + " termina com " + resultado.vidaFinalJ1() + " de vida.");
-                    System.out.println(hacker2.getNome() + " termina com " + resultado.vidaFinalJ2() + " de vida.");
-
-                    if (hacker1.getVida() <= 0) {
-                        System.out.println("\n--- FIM DE JOGO ---");
-                        System.out.println(hacker2.getNome() + " venceu!");
-                        break;
-                    } else if (hacker2.getVida() <= 0) {
-                        System.out.println("\n--- FIM DE JOGO ---");
-                        System.out.println(hacker1.getNome() + " venceu!");
-                        break;
-                    }
-
-                    if(hacker1.getMaoSize()== 0){
-                        hacker1.setMao(deckHacker1Copia);
-                    }
-                    else if(hacker2.getMaoSize()== 0) {
-                        hacker2.setMao(deckHacker2Copia);
                     }
                 }
+                else if(i%2 != 0){
+                    int estado = GerenciadorMultiplayer.GerenciarJogoMultiplayer(hacker2, hacker1,
+                            deckHacker2Copia, deckHacker1Copia);
+                    if(estado == -1){
+                        break;
+                    }
+                }
+                i++;
             }
 
         } else if (opcao == 2) {
+            System.out.println("Jogador:");
+            System.out.print("Digite seu nome de Hacker: ");
+            String nome1 = teclado.nextLine();
+            System.out.print("Digite seu id: ");
+            String id1 = teclado.nextLine();
+            System.out.println("Deseja selecionar suas cartas manualmente? (sim/nao): ");
+            String selecao1 = teclado.nextLine();
+            Hacker hacker1 = new Hacker(nome1, id1, selecao1);
 
+            Bot bot = new Bot();
+
+            List<Carta> deckHackerCopia = new ArrayList<>();
+            List<Carta> deckBotCopia = new ArrayList<>();
+            Mao deckHacker = hacker1.getMao();
+            Mao deckBot = bot.getMao();
+            deckHackerCopia.addAll(deckHacker.getMao());
+            deckBotCopia.addAll(deckBot.getMao());
+
+            System.out.println("Decks montados. A batalha começa!");
+
+            int i = 0;
+            while (true) {
+                int estado = GerenciadorSinglePlayer.GerenciadorSinglePlayer(hacker1, bot,
+                        deckHackerCopia, deckBotCopia, i);
+                if(estado == -1){
+                    break;
+                }
+                i++;
+            }
         } else {
-            return;
+            System.out.println("Opção inválida. Encerrando o programa.");
         }
-
     }
 }

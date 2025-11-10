@@ -214,11 +214,16 @@ public class Bot {
         this.energia = energia;
     }
 
-    public Mao getMao() {
-        return mao;
+    public int getMaoSize() {
+        return this.mao.size();
     }
-    public void setMao(Mao mao) {
-        this.mao = mao;
+
+    public void setMao(List<Carta> novaMao) {
+        this.mao = new Mao(novaMao);
+    }
+
+    public Mao getMao() {
+        return this.mao;
     }
 
     public String getNome() {
