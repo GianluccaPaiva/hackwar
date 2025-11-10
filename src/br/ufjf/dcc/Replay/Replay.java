@@ -158,7 +158,7 @@ public class Replay {
             return;
         }
 
-        System.out.println("▶ Tentando gravar em: [" + caminho + "]");
+        //System.out.println("▶ Tentando gravar em: [" + caminho + "]");
         File arquivo = new File(caminho);
         File dir = arquivo.getParentFile();
 
@@ -179,7 +179,7 @@ public class Replay {
 
         try (FileWriter writer = new FileWriter(arquivo, true)) {
             writer.write(conteudo + System.lineSeparator());
-            System.out.println("📝 Registrado em: " + arquivo.getAbsolutePath());
+            //System.out.println("📝 Registrado em: " + arquivo.getAbsolutePath());
         } catch (IOException e) {
             System.out.println("❌ Erro ao registrar replay: " + e.getMessage());
         }

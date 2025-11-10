@@ -194,7 +194,7 @@ public class Bot {
         if (cartasParaJogar.isEmpty()) {
             System.out.println("❌ Bot não possui energia ou carta ideal para reagir e passa a vez.");
         } else {
-            System.out.println(this.nome + " jogou " + cartasParaJogar.size() + " cartas.");
+            System.out.println(this.nome + " jogou " + cartasParaJogar.size() + " cartas.\n");
         }
         return cartasParaJogar;
     }

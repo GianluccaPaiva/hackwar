@@ -101,7 +101,7 @@ public class Menu {
         System.out.println("                ::##  ####++##  ####               ");
         System.out.println("                                                   ");
         System.out.println("===================================================");
-        System.out.println("           H A C K W A R   I N I C I A D O         ");
+        System.out.println("          H A C K W A R   I N I C I A D O          ");
         System.out.println("===================================================");
         System.out.println(RESET);
     }
