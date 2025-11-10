@@ -26,7 +26,6 @@ public class Replay {
             File arquivo = new File(caminhoSanitizado);
 
             try {
-                // Se o arquivo não existir, tenta criar
                 if (!arquivo.exists()) {
                     File dir = arquivo.getParentFile();
                     if (dir != null && !dir.exists()) {
@@ -59,7 +58,7 @@ public class Replay {
                     System.out.println("❌ Erro ao converter número do índice: " + nome);
                 }
             }
-            return 1; // Índice padrão
+            return 1;
         }
 
 
@@ -102,7 +101,7 @@ public class Replay {
             return index;
         }
 
-        // Cria o caminho para o próximo arquivo de replay (incrementa o índice)
+
         public void nextReplay() {
             this.index++;
             int sub = currentFileName.lastIndexOf("_");
