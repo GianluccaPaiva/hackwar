@@ -59,8 +59,8 @@ public class Menu {
         System.out.println("Tem certeza que deseja deletar todos os replays? (s/n)");
         String resposta = teclado.nextLine();
         if (resposta.equalsIgnoreCase("s")) {
-            Replay.deletarTodosReplay();
             System.out.println("Todos os replays foram deletados.");
+            Replay.deletarTodosReplay();
         } else {
             System.out.println("Operação cancelada. Retornando ao menu principal.");
         }

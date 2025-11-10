@@ -123,4 +123,11 @@ public class Hacker {
     public String getId() {
         return this.id;
     }
+
+    public String getStatusReplay() {
+        return String.format(
+                "Hacker: %s (Vida: %d/%d | Energia: %d/%d)",
+                this.nome, this.vida, MAX_VIDA, this.energia, MAX_ENERGIA
+        );
+    }
 }

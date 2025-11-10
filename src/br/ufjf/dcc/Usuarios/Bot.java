@@ -229,4 +229,11 @@ public class Bot {
     public String getNome() {
         return nome;
     }
+
+    public String getStatusReplay() {
+        return String.format(
+                "Bot: %s (Vida: %d/%d | Energia: %d/%d)",
+                this.nome, this.vida, MAX_VIDA, this.energia, MAX_ENERGIA
+        );
+    }
 }

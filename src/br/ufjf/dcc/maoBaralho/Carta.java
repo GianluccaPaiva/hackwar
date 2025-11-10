@@ -35,6 +35,14 @@ public class Carta {
         return this.poder;
     }
 
+    public String getReplayInfo() {
+        String infoEfeito = this.efeito.equals("Não tem efeito") ? "" : ", Efeito: " + this.efeito;
+        return String.format(
+                "| %s | Tipo: %s | Poder: %.0f | Custo: %d%s |",
+                this.nome, this.tipo, this.poder, this.custo, infoEfeito
+        );
+    }
+
     public int getCusto() {
         return this.custo;
     }

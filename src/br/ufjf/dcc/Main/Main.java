@@ -94,7 +94,8 @@ public class Main {
                 i++;
             }
         } else {
-            System.out.println("Opção inválida. Encerrando o programa.");
+
+
         }
     }
 }
