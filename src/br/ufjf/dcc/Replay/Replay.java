@@ -120,6 +120,8 @@ public class Replay {
             }
 
             this.currentFileName = novoNomeArquivo;
+            // Adicionado: Limpa o conteúdo do novo arquivo de replay ao configurá-lo.
+            clearReplayFile(this.currentFileName);
             System.out.println("🔁 Novo replay configurado: " + this.currentFileName);
             atualizarConfig(this.currentFileName);
         }

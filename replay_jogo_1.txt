@@ -1,7 +1,0 @@
-
-=== NOVA RODADA === 
---- Status Inicial ---
-Hacker: fde (Vida: 100/100 | Energia: 10/10)
-Hacker: f (Vida: 100/100 | Energia: 10/10)
-Ação: f entregou o sistema/perdeu antes da consolidação.
-fde VENCEU!

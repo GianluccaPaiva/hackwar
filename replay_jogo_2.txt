@@ -1,7 +1,0 @@
-
-=== NOVA RODADA === 
---- Status Inicial ---
-Hacker: e (Vida: 100/100 | Energia: 10/10)
-Hacker: e (Vida: 100/100 | Energia: 10/10)
-Ação: e entregou o sistema/perdeu antes da jogada do oponente.
-e VENCEU!
