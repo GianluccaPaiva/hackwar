@@ -85,16 +85,13 @@ public class Main {
 
             int i = 0;
             while (true) {
-                int estado = GerenciadorSinglePlayer.GerenciadorSinglePlayer(hacker1, bot,
+                int estado = GerenciadorSinglePlayer.GerenciarSinglePlayer(hacker1, bot,
                         deckHackerCopia, deckBotCopia, i);
                 if(estado == -1){
                     break;
                 }
                 i++;
             }
-        } else {
-
-
         }
     }
 }

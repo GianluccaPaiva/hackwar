@@ -10,7 +10,7 @@ public class Baralho {
     private List<Carta> cartas;
 
     public Baralho(){
-        cartas = new ArrayList<>();
+        this.cartas = new ArrayList<>();
         inicializarCarta();
     }
 
@@ -58,7 +58,7 @@ public class Baralho {
                     efeito = "Não tem efeito";
                 }
                 Carta carta = new Carta(nome, tipo, descricao, poder, custo, efeito);
-                cartas.add(carta);
+                this.cartas.add(carta);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -66,7 +66,7 @@ public class Baralho {
     }
 
     public List<Carta> getCartas() {
-        return cartas;
+        return this.cartas;
     }
 
     private void inicializarCarta(){

@@ -101,7 +101,7 @@ public class Menu {
         System.out.println("                ::##  ####++##  ####               ");
         System.out.println("                                                   ");
         System.out.println("===================================================");
-        System.out.println("            H A C K W A R   I N I C I A D O        ");
+        System.out.println("           H A C K W A R   I N I C I A D O         ");
         System.out.println("===================================================");
         System.out.println(RESET);
     }
@@ -214,12 +214,12 @@ public class Menu {
                 System.out.println("Saiba escolha! Retornando ao Menu Principal...");
                 Menu();
             } else if(resposta.equalsIgnoreCase("F")) {
-                System.out.println("Muito bem! Prepare-se para o combate!");
+                System.out.println("Muito bem! Prepare-se para chorar!");
                 return 2;
             }
         } else if(opcao == 5){
             System.out.print(AMARELO);
-            System.out.println("Criado pelo Nexus time - Gabriel Lineker && Gianlucca Paiva");
+            System.out.println("Criado por NexusTeam - Gabriel Lineker && Gianlucca Paiva");
             System.out.print(RESET);
             System.out.print(CIANO);
             System.out.println("Número das matrículas respectivamente: " + 202476025 + " && " + 202476026);

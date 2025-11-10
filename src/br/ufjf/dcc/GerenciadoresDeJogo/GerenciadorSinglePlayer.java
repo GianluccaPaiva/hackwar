@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GerenciadorSinglePlayer {
-    public static int GerenciadorSinglePlayer(Hacker h, Bot b, List<Carta> deckHCopia, List<Carta> deckBCopia, int val){
+    public static int GerenciarSinglePlayer(Hacker h, Bot b, List<Carta> deckHCopia, List<Carta> deckBCopia, int val){
 
         int roundNumber = val + 1;
         String turnoOrdem = "";

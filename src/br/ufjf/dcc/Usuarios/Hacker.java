@@ -11,6 +11,7 @@ public class Hacker {
     private static int MAX_ENERGIA = 10, MAX_VIDA = 100;
     private int vida, energia;
     private Mao mao;
+
     public Hacker(String nome, String id, String tipoSelecao) {
         this.nome = nome;
         this.id = id;
@@ -118,9 +119,6 @@ public class Hacker {
 
     public String getNome() {
         return this.nome;
-    }
-    public String getId() {
-        return this.id;
     }
 
     public String getStatusReplay() {
