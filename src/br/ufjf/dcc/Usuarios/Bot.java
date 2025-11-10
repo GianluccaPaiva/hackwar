@@ -1,6 +1,6 @@
 package br.ufjf.dcc.Usuarios;
-import br.ufjf.dcc.mao_baralho.Carta;
-import br.ufjf.dcc.mao_baralho.Mao;
+import br.ufjf.dcc.maoBaralho.Carta;
+import br.ufjf.dcc.maoBaralho.Mao;
 
 import java.util.ArrayList;
 import java.util.List;

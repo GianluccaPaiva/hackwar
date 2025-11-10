@@ -3,7 +3,7 @@ package br.ufjf.dcc.GerenciadoresDeJogo;
 import br.ufjf.dcc.CalculosDoCombate.Calcular;
 import br.ufjf.dcc.Usuarios.Bot;
 import br.ufjf.dcc.Usuarios.Hacker;
-import br.ufjf.dcc.mao_baralho.Carta;
+import br.ufjf.dcc.maoBaralho.Carta;
 import java.util.ArrayList;
 import java.util.List;
 

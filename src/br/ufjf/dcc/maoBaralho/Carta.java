@@ -1,4 +1,4 @@
-package br.ufjf.dcc.mao_baralho;
+package br.ufjf.dcc.maoBaralho;
 
 public class Carta {
     String nome, tipo, descricao, efeito;

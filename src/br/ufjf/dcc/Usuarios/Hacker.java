@@ -1,6 +1,7 @@
 package br.ufjf.dcc.Usuarios;
-import br.ufjf.dcc.mao_baralho.Carta;
-import br.ufjf.dcc.mao_baralho.Mao;
+import br.ufjf.dcc.Replay.Replay;
+import br.ufjf.dcc.maoBaralho.Carta;
+import br.ufjf.dcc.maoBaralho.Mao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,6 @@ public class Hacker {
     private static int MAX_ENERGIA = 10, MAX_VIDA = 100;
     private int vida, energia;
     private Mao mao;
-
     public Hacker(String nome, String id, String tipoSelecao) {
         this.nome = nome;
         this.id = id;

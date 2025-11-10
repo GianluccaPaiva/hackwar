@@ -1,4 +1,4 @@
-package br.ufjf.dcc.mao_baralho;
+package br.ufjf.dcc.maoBaralho;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

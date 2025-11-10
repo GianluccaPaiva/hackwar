@@ -3,16 +3,16 @@ package br.ufjf.dcc.Main;
 import br.ufjf.dcc.GerenciadoresDeJogo.GerenciadorMultiplayer;
 import br.ufjf.dcc.GerenciadoresDeJogo.GerenciadorSinglePlayer;
 import br.ufjf.dcc.Menu.Menu;
+import br.ufjf.dcc.Replay.Replay;
 import br.ufjf.dcc.Usuarios.Bot;
 import br.ufjf.dcc.Usuarios.Hacker;
-import br.ufjf.dcc.mao_baralho.Carta;
-import br.ufjf.dcc.mao_baralho.Mao;
+import br.ufjf.dcc.maoBaralho.Carta;
+import br.ufjf.dcc.maoBaralho.Mao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
         int opcao = Menu.Menu();
