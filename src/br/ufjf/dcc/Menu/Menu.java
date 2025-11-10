@@ -105,7 +105,7 @@ public class Menu {
         System.out.println(RESET);
     }
 
-    private static void exibirAnimacaoEntradaMaisBonita() {
+    private static void exibirAnimacaoEntrada() {
         final String GREEN = "\u001B[32m";
         final String RESET = "\u001B[0m";
         String[] carregamento = {"\\", "|", "/", "-"};
@@ -169,7 +169,7 @@ public class Menu {
     public static int Menu() {
         final String GREEN = "\u001B[32m";
         final String RESET = "\u001B[0m";
-        //exibirAnimacaoEntradaMaisBonita();
+        exibirAnimacaoEntrada();
         limparTerminal();
         exibirTitulo();
         System.out.println(GREEN);
