@@ -108,6 +108,7 @@ public class Menu {
 
     private static void exibirAnimacaoEntrada() {
         final String GREEN = "\u001B[32m";
+        final String AMARELO = "\u001B[33m";
         final String RESET = "\u001B[0m";
         String[] carregamento = {"\\", "|", "/", "-"};
         String[] modulos = {
@@ -170,6 +171,8 @@ public class Menu {
     public static int Menu() {
         final String GREEN = "\u001B[32m";
         final String RESET = "\u001B[0m";
+        final String AMARELO = "\u001B[33m";
+        final String CIANO = "\u001B[36m";
         exibirAnimacaoEntrada();
         limparTerminal();
         exibirTitulo();
@@ -179,7 +182,8 @@ public class Menu {
         System.out.println("2. Carregar Replay");
         System.out.println("3. Deletar Todos Replay");
         System.out.println("4. Não sei jogar");
-        System.out.println("5. Sair");
+        System.out.println("5. Criadores");
+        System.out.println("6. Sair");
         Scanner teclado = new Scanner(System.in);
         System.out.print("Escolha uma opcao: ");
         String opcLine = teclado.nextLine();
@@ -197,7 +201,7 @@ public class Menu {
             Menu.deletarTodosReplay(teclado);
             return 0;
 
-        } else if (opcao == 5) {
+        } else if (opcao == 6) {
             System.out.println("Saindo do jogo. Ate mais!");
             System.exit(0);
 
@@ -213,7 +217,15 @@ public class Menu {
                 System.out.println("Muito bem! Prepare-se para o combate!");
                 return 2;
             }
-        } else {
+        } else if(opcao == 5){
+            System.out.print(AMARELO);
+            System.out.println("Criado pelo Nexus time - Gabriel Lineker && Gianlucca Paiva");
+            System.out.print(RESET);
+            System.out.print(CIANO);
+            System.out.println("Número das matrículas respectivamente: " + 202476025 + " && " + 202476026);
+            System.out.print(RESET);
+        }
+        else {
             System.out.println("Opcao invalida. Tente novamente.");
             Menu();
             return 0;
