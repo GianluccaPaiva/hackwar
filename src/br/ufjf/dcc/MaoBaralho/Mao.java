@@ -1,4 +1,4 @@
-package br.ufjf.dcc.maoBaralho;
+package br.ufjf.dcc.MaoBaralho;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +88,7 @@ public class Mao {
                 System.out.println("CARTAS DE ATAQUE: \n");
                 for(Carta carta: this.ataques){
                     System.out.print("ID: " + id + " - ");
-                    carta.imprimirCarta();
+                    carta.imprimirCarta("ataque");
                     id++;
                 }
                 System.out.println("Insira a cartas de ataque desejadas(IDs e com espaçamento): ");
@@ -101,7 +101,7 @@ public class Mao {
                 System.out.println("CARTAS DE DEFESA: \n");
                 for(Carta carta: this.defesas){
                     System.out.print("ID: " + id + " - ");
-                    carta.imprimirCarta();
+                    carta.imprimirCarta("defesa");
                     id++;
                 }
                 System.out.println("Insira a cartas de defesa desejadas(IDs e com espaçamento):");
@@ -115,7 +115,7 @@ public class Mao {
                 System.out.println("CARTAS DE SUPORTE: \n");
                 for(Carta carta: this.suportes){
                     System.out.print("ID: " + id + " - ");
-                    carta.imprimirCarta();
+                    carta.imprimirCarta("suporte");
                     id++;
                 }
                 System.out.println("Insira a cartas de suporte desejadas(IDs e com espaçamento):");
@@ -135,11 +135,20 @@ public class Mao {
     }
 
     public void exibirMao() {
+        String corVermelha = "\u001B[31m",resetCor = "\u001B[0m", corAzul = "\u001B[34m", corVerde = "\u001B[32m";
         System.out.println("Cartas na Sua Mão (" + this.mao.size() + "/" + LIMITE_CARTAS + "):");
         for (int i = 0; i < this.mao.size(); i++) {
             Carta carta = this.mao.get(i);
-            System.out.print("ID: " + (i + 1) + " - ");
-            carta.imprimirCarta();
+            if(carta.tipo.equalsIgnoreCase("ataque")){
+                System.out.print( corVermelha + "ID: " + (i + 1) + " - " + resetCor);
+                carta.imprimirCarta("ataque");
+            }else if(carta.tipo.equalsIgnoreCase("defesa")){
+                System.out.print(corAzul + "ID: " + (i + 1) + " - " + resetCor);
+                carta.imprimirCarta("defesa");
+            }else{
+                System.out.print(corVerde+"ID: " + (i + 1) + " - "+resetCor);
+                carta.imprimirCarta("suporte");
+            }
         }
     }
 

@@ -1,7 +1,6 @@
 package br.ufjf.dcc.Usuarios;
-import br.ufjf.dcc.maoBaralho.Carta;
-import br.ufjf.dcc.maoBaralho.Mao;
-
+import br.ufjf.dcc.MaoBaralho.Carta;
+import br.ufjf.dcc.MaoBaralho.Mao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -235,5 +234,44 @@ public class Bot {
                 "Bot: %s (Vida: %d/%d | Energia: %d/%d)",
                 this.nome, this.vida, MAX_VIDA, this.energia, MAX_ENERGIA
         );
+    }
+
+    private void espera(int milissegundos) {
+        try {
+            Thread.sleep(milissegundos);
+        } catch (InterruptedException e) {
+            return;
+        }
+    }
+
+    public void instruirComoJogar(){
+        String corAzul = "\u001B[34m";
+        String corReset = "\u001B[0m";
+        System.out.println(corAzul);
+        System.out.println("Olá pobre jogador humano, eu sou o Bot, seu adversário virtual.");
+        espera(2000);
+        System.out.println("Estou fazendo uma misericórdia em te ensinar como jogar");
+        espera(2000);
+        System.out.println("Prepare-se para aprender os conceitos básicos do jogo de cartas de hackers!");
+        espera(2000);
+        System.out.println("------------------------------");
+        System.out.println("O jogo consistem em duelos de hackers, onde cada jogador tem um conjunto de cartas com diferentes tipos e efeitos.");
+        espera(2000);
+        System.out.println("Existem três tipos principais de cartas: Ataque, Defesa e Suporte.");
+        espera(2000);
+        System.out.println("Cartas de Ataque são usadas para causar dano ao oponente.");
+        espera(2000);
+        System.out.println("Cartas de Defesa ajudam a proteger contra ataques inimigos.");
+        espera(2000);
+        System.out.println("Cartas de Suporte podem aumentar suas próprias habilidades ou enfraquecer as do oponente.");
+        espera(2000);
+        System.out.println("Cada carta tem um custo de energia, e você deve gerenciar sua energia sabiamente para jogar suas cartas.");
+        espera(2000);
+        System.out.println("O objetivo é reduzir a vida do oponente a zero antes que ele faça o mesmo com você.");
+        espera(2000);
+        System.out.println("Agora que você sabe o básico, prepare-se para a batalha!");
+        espera(2000);
+        System.out.println("Boa sorte, você vai precisar!");
+        System.out.println("------------------------------" + corReset);
     }
 }

@@ -1,5 +1,5 @@
 package br.ufjf.dcc.CalculosDoCombate;
-import br.ufjf.dcc.maoBaralho.Carta;
+import br.ufjf.dcc.MaoBaralho.Carta;
 import java.util.ArrayList;
 import java.util.List;
 

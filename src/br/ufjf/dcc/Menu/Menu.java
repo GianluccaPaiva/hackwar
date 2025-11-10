@@ -1,6 +1,7 @@
 package br.ufjf.dcc.Menu;
 import java.util.Scanner;
 import br.ufjf.dcc.Replay.Replay;
+import br.ufjf.dcc.Usuarios.Bot;
 
 public class Menu {
     private static int selecionarTipoJogo(Scanner teclado) {
@@ -177,7 +178,8 @@ public class Menu {
         System.out.println("1. Iniciar Jogo");
         System.out.println("2. Carregar Replay");
         System.out.println("3. Deletar Todos Replay");
-        System.out.println("4. Sair");
+        System.out.println("4. Não sei jogar");
+        System.out.println("5. Sair");
         Scanner teclado = new Scanner(System.in);
         System.out.print("Escolha uma opcao: ");
         String opcLine = teclado.nextLine();
@@ -195,10 +197,22 @@ public class Menu {
             Menu.deletarTodosReplay(teclado);
             return 0;
 
-        } else if (opcao == 4) {
+        } else if (opcao == 5) {
             System.out.println("Saindo do jogo. Ate mais!");
             System.exit(0);
 
+        } else if (opcao==4) {
+            Bot bot = new Bot();
+            bot.instruirComoJogar();
+            System.out.println("Deseja retornar ao Menu principal ou ir no Fight comigo?(Se tiver coragem) (M/F)");
+            String resposta = teclado.nextLine();
+            if(resposta.equalsIgnoreCase("M")){
+                System.out.println("Saiba escolha! Retornando ao Menu Principal...");
+                Menu();
+            } else if(resposta.equalsIgnoreCase("F")) {
+                System.out.println("Muito bem! Prepare-se para o combate!");
+                return 2;
+            }
         } else {
             System.out.println("Opcao invalida. Tente novamente.");
             Menu();

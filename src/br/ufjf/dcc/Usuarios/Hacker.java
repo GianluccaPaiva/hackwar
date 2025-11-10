@@ -1,7 +1,6 @@
 package br.ufjf.dcc.Usuarios;
-import br.ufjf.dcc.Replay.Replay;
-import br.ufjf.dcc.maoBaralho.Carta;
-import br.ufjf.dcc.maoBaralho.Mao;
+import br.ufjf.dcc.MaoBaralho.Carta;
+import br.ufjf.dcc.MaoBaralho.Mao;
 
 import java.util.ArrayList;
 import java.util.List;

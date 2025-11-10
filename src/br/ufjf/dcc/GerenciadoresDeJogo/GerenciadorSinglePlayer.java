@@ -4,7 +4,7 @@ import br.ufjf.dcc.CalculosDoCombate.Calcular;
 import br.ufjf.dcc.Replay.Replay;
 import br.ufjf.dcc.Usuarios.Bot;
 import br.ufjf.dcc.Usuarios.Hacker;
-import br.ufjf.dcc.maoBaralho.Carta;
+import br.ufjf.dcc.MaoBaralho.Carta;
 import java.util.ArrayList;
 import java.util.List;
 
