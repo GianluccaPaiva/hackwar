@@ -224,6 +224,8 @@ public class Menu {
             System.out.print(CIANO);
             System.out.println("Número das matrículas respectivamente: " + 202476025 + " && " + 202476026);
             System.out.print(RESET);
+            System.out.println("Precione enter para voltar ao menu principal");
+            Menu();
         }
         else {
             System.out.println("Opcao invalida. Tente novamente.");
