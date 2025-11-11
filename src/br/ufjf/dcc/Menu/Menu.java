@@ -127,13 +127,13 @@ public class Menu {
             System.out.println("---------------------------------------------------");
 
 
-            for (int i = 0; i < 60; i++) {
+            for (int i = 0; i < 40; i++) {
                 String indicador = carregamento[i % carregamento.length];
                 System.out.print("\r[BOOT] Status: Processando... " + indicador + " | " + i + "%");
                 Thread.sleep(30);
             }
             System.out.println("\r[BOOT] Status: Processando... | CONCLUÍDO (100%)");
-            Thread.sleep(500);
+            Thread.sleep(400);
 
 
             int delayPasso = 100;
@@ -225,6 +225,7 @@ public class Menu {
             System.out.println("Número das matrículas respectivamente: " + 202476025 + " && " + 202476026);
             System.out.print(RESET);
             System.out.println("Precione enter para voltar ao menu principal");
+            teclado.nextLine();
             Menu();
         }
         else {
