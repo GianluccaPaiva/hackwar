@@ -24,7 +24,7 @@ public class Menu {
         } else {
             System.out.println("Opção inválida. Retornando ao menu principal.");
             System.out.println(RESET);
-            Menu.Menu();
+            Menu.Menu(false);
             return 0;
         }
     }
@@ -37,7 +37,7 @@ public class Menu {
         int numeroReplay = teclado.nextInt();
         if (numeroReplay <= 0) {
             System.out.println("Número inválido. Retornando ao menu principal.");
-            Menu.Menu();
+            Menu.Menu(false);
         }
         String caminhoReplay = "replay_jogo_" + numeroReplay + ".txt";
         System.out.println("Carregando replay do arquivo: " + caminhoReplay);
@@ -168,12 +168,14 @@ public class Menu {
         }
     }
 
-    public static int Menu() {
+    public static int Menu(boolean primeiraEntrada) {
         final String GREEN = "\u001B[32m";
         final String RESET = "\u001B[0m";
         final String AMARELO = "\u001B[33m";
         final String CIANO = "\u001B[36m";
-        exibirAnimacaoEntrada();
+        if(primeiraEntrada == true){
+            exibirAnimacaoEntrada();
+        }
         limparTerminal();
         exibirTitulo();
         System.out.println(GREEN);
@@ -190,7 +192,7 @@ public class Menu {
         int opcao = retornaInteiroOpcao(opcLine);
         if (opcao == -1) {
             System.out.println("Opcao invalida. Tente novamente.");
-            Menu.Menu();
+            Menu.Menu(false);
         } else if (opcao == 1) {
             return selecionarTipoJogo(teclado);
 
@@ -212,7 +214,7 @@ public class Menu {
             String resposta = teclado.nextLine();
             if(resposta.equalsIgnoreCase("M")){
                 System.out.println("Saiba escolha! Retornando ao Menu Principal...");
-                Menu();
+                Menu(false);
             } else if(resposta.equalsIgnoreCase("F")) {
                 System.out.println("Muito bem! Prepare-se para chorar!");
                 return 2;
@@ -226,11 +228,11 @@ public class Menu {
             System.out.print(RESET);
             System.out.println("Precione enter para voltar ao menu principal");
             teclado.nextLine();
-            Menu();
+            Menu(false);
         }
         else {
             System.out.println("Opcao invalida. Tente novamente.");
-            Menu();
+            Menu(false);
             return 0;
         }
         System.out.println(RESET);

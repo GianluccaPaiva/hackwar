@@ -15,7 +15,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
 
-        int opcao = Menu.Menu();
+        int opcao = Menu.Menu(true);
         if (opcao == 1) {
             System.out.println("Jogador 1:");
             System.out.print("Digite seu nome de Hacker: ");
