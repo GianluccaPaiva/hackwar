@@ -10,6 +10,8 @@ public class Bot {
     private static int MAX_ENERGIA = 10, MAX_VIDA = 100;
     private int vida, energia;
     private Mao mao;
+    private  String LARANJA = "\u001b[93m";
+    private String RESET = "\u001B[0m";
 
     public Bot() {
         this.nome = "BOT";
@@ -71,6 +73,7 @@ public class Bot {
     }
 
     private void exibeFrase(Carta reacao) {
+        System.out.print(LARANJA);
         if (reacao.getTipo().equalsIgnoreCase("Ataque")) {
             System.out.println(this.nome + ": " + selecionarFrase(FRASES_ATAQUE));
         } else if (reacao.getTipo().equalsIgnoreCase("Defesa")) {
@@ -82,6 +85,7 @@ public class Bot {
                 System.out.println(this.nome + ": " + selecionarFrase(FRASES_SUPORTE_BUFF_DEBUFF));
             }
         }
+        System.out.print(RESET);
     }
 
     public void exibirStatus() {

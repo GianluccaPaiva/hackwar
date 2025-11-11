@@ -1,0 +1,21 @@
+
+=== ROUND 1 ===
+--- Status Inicial ---
+Hacker: f (Vida: 100/100 | Energia: 10/10)
+Bot: BOT (Vida: 100/100 | Energia: 10/10)
+--- Ações da Rodada ---
+Ordem: f joga primeiro. BOT reage.
+f jogou 1 cartas:
+  Hacker: | Reconhecimento Ativo | Tipo: ATAQUE | Poder: 20 | Custo: 2 |
+BOT jogou 1 cartas:
+  Bot: | Proteção Anti-DDoS | Tipo: DEFESA | Poder: 40 | Custo: 4 |
+--- Resultado da Consolidação ---
+f Vida Final: 100, Energia Final: 9
+BOT Vida Final: 100, Energia Final: 7
+
+=== ROUND 2 ===
+--- Status Inicial ---
+Hacker: f (Vida: 100/100 | Energia: 9/10)
+Bot: BOT (Vida: 100/100 | Energia: 7/10)
+Ação: f entregou o sistema ou teve a vida zerada durante a escolha.
+BOT VENCEU!
