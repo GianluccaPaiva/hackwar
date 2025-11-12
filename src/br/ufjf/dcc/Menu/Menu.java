@@ -12,7 +12,8 @@ public class Menu {
         System.out.println("1. Jogo Multiplayer");
         System.out.println("2. Jogo Com Bot");
         System.out.print("Escolha uma opcao: ");
-        int tipoJogo = teclado.nextInt();
+        String opcLine = teclado.nextLine();
+        int tipoJogo = retornaInteiroOpcao(opcLine);
         if (tipoJogo == 1) {
             System.out.println("Iniciando Jogo Multiplayer...");
             System.out.println(RESET);
@@ -29,20 +30,22 @@ public class Menu {
         }
     }
 
-    private static void selecionarReplay(Scanner teclado) {
+    private static int selecionarReplay(Scanner teclado) {
         final String GREEN = "\u001B[32m";
         final String RESET = "\u001B[0m";
         System.out.println(GREEN);
         System.out.println("Digite o número do replay que deseja carregar: " + "(Quantidade de replays atuais -> " + Replay.getIndice() + ")");
-        int numeroReplay = teclado.nextInt();
+        String opcLine = teclado.nextLine();
+        int numeroReplay = retornaInteiroOpcao(opcLine);
         if (numeroReplay <= 0) {
             System.out.println("Número inválido. Retornando ao menu principal.");
-            Menu.Menu(false);
+            return Menu.Menu(false);
         }
         String caminhoReplay = "replay_jogo_" + numeroReplay + ".txt";
         System.out.println("Carregando replay do arquivo: " + caminhoReplay);
         System.out.println(RESET);
         Replay.reproduzirReplay(caminhoReplay);
+        return 0;
     }
 
     private static int retornaInteiroOpcao(String opcao) {
@@ -197,8 +200,7 @@ public class Menu {
             return selecionarTipoJogo(teclado);
 
         } else if (opcao == 2) {
-            selecionarReplay(teclado);
-            return 0;
+            return selecionarReplay(teclado);
         } else if (opcao == 3) {
             Menu.deletarTodosReplay(teclado);
             return 0;
