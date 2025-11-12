@@ -1,4 +1,3 @@
-
 package br.ufjf.dcc.Main;
 import br.ufjf.dcc.GerenciadoresDeJogo.GerenciadorMultiplayer;
 import br.ufjf.dcc.GerenciadoresDeJogo.GerenciadorSinglePlayer;

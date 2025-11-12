@@ -173,7 +173,7 @@ public class Menu {
         final String RESET = "\u001B[0m";
         final String AMARELO = "\u001B[33m";
         final String CIANO = "\u001B[36m";
-        if(primeiraEntrada == true){
+        if(primeiraEntrada){
             exibirAnimacaoEntrada();
         }
         limparTerminal();
@@ -214,7 +214,7 @@ public class Menu {
             String resposta = teclado.nextLine();
             if(resposta.equalsIgnoreCase("M")){
                 System.out.println("Saiba escolha! Retornando ao Menu Principal...");
-                Menu(false);
+                return Menu(false);
             } else if(resposta.equalsIgnoreCase("F")) {
                 System.out.println("Muito bem! Prepare-se para chorar!");
                 return 2;
@@ -228,12 +228,11 @@ public class Menu {
             System.out.print(RESET);
             System.out.println("Precione enter para voltar ao menu principal");
             teclado.nextLine();
-            Menu(false);
+            return Menu(false);
         }
         else {
             System.out.println("Opcao invalida. Tente novamente.");
-            Menu(false);
-            return 0;
+            return Menu(false);
         }
         System.out.println(RESET);
         return 0;
